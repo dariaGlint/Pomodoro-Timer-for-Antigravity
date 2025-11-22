@@ -1,4 +1,5 @@
 import './style.css'
+import { SoundManager } from './audio.js'
 
 class PomodoroTimer {
   constructor() {
@@ -16,12 +17,14 @@ class PomodoroTimer {
     this.timerId = null;
     this.mode = 'work'; // 'work', 'shortBreak', 'longBreak'
     this.pomodorosCompleted = 0;
+    this.soundManager = new SoundManager();
 
     // DOM Elements
     this.timerDisplay = document.getElementById('timer-display');
     this.startBtn = document.getElementById('start-btn');
     this.resetBtn = document.getElementById('reset-btn');
     this.statusIndicator = document.getElementById('status-indicator');
+    this.soundBtn = document.getElementById('sound-btn');
 
     // Settings DOM
     this.settingsBtn = document.getElementById('settings-btn');
@@ -32,7 +35,9 @@ class PomodoroTimer {
       work: document.getElementById('work-time'),
       shortBreak: document.getElementById('short-break-time'),
       longBreak: document.getElementById('long-break-time'),
-      interval: document.getElementById('long-break-interval')
+      interval: document.getElementById('long-break-interval'),
+      soundType: document.getElementById('sound-type'),
+      soundVolume: document.getElementById('sound-volume')
     };
 
     this.initEventListeners();
@@ -43,6 +48,12 @@ class PomodoroTimer {
   initEventListeners() {
     this.startBtn.addEventListener('click', () => this.toggleTimer());
     this.resetBtn.addEventListener('click', () => this.resetTimer());
+
+    // Sound Toggle
+    this.soundBtn.addEventListener('click', () => {
+      const isPlaying = this.soundManager.toggle();
+      this.soundBtn.classList.toggle('active', isPlaying);
+    });
 
     // Settings Modal
     this.settingsBtn.addEventListener('click', () => this.openSettings());
@@ -151,6 +162,11 @@ class PomodoroTimer {
     this.inputs.shortBreak.value = this.settings.shortBreakTime;
     this.inputs.longBreak.value = this.settings.longBreakTime;
     this.inputs.interval.value = this.settings.longBreakInterval;
+
+    // Sound Settings
+    this.inputs.soundType.value = this.soundManager.soundType;
+    this.inputs.soundVolume.value = this.soundManager.volume * 100;
+
     this.settingsModal.classList.remove('hidden');
   }
 
@@ -163,6 +179,10 @@ class PomodoroTimer {
     this.settings.shortBreakTime = parseInt(this.inputs.shortBreak.value) || 5;
     this.settings.longBreakTime = parseInt(this.inputs.longBreak.value) || 15;
     this.settings.longBreakInterval = parseInt(this.inputs.interval.value) || 4;
+
+    // Apply Sound Settings
+    this.soundManager.setSoundType(this.inputs.soundType.value);
+    this.soundManager.setVolume(parseInt(this.inputs.soundVolume.value) / 100);
 
     this.closeSettings();
 

@@ -20,6 +20,15 @@
       <div class="controls">
         <button id="start-btn" class="btn primary">Start</button>
         <button id="reset-btn" class="btn secondary">Reset</button>
+        <button id="sound-btn" class="btn icon-btn" aria-label="Toggle Sound">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+            <path
+              d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+            </path>
+          </svg>
+        </button>
         <button id="settings-btn" class="btn icon-btn" aria-label="Settings">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -53,6 +62,19 @@
       <div class="form-group">
         <label for="long-break-interval">Long Break Interval</label>
         <input type="number" id="long-break-interval" value="4" min="1" max="10">
+      </div>
+      <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0;">
+      <h3>Ambient Sound</h3>
+      <div class="form-group">
+        <label for="sound-type">Sound Type</label>
+        <select id="sound-type">
+          <option value="rain">Rain</option>
+          <option value="cafe">Cafe</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sound-volume">Volume</label>
+        <input type="range" id="sound-volume" min="0" max="100" value="50">
       </div>
       <div class="modal-actions">
         <button id="close-modal-btn" class="btn secondary">Cancel</button>
