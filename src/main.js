@@ -1,5 +1,6 @@
 import './style.css'
 import { SoundManager } from './audio.js'
+import { TaskManager } from './tasks.js'
 
 class PomodoroTimer {
   constructor() {
@@ -18,6 +19,7 @@ class PomodoroTimer {
     this.mode = 'work'; // 'work', 'shortBreak', 'longBreak'
     this.pomodorosCompleted = 0;
     this.soundManager = new SoundManager();
+    this.taskManager = new TaskManager();
 
     // DOM Elements
     this.timerDisplay = document.getElementById('timer-display');
