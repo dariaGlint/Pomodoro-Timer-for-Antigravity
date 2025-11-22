@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-    base: './', // Relative base path for GitHub Pages
+    base: '/Pomodoro-Timer-for-Antigravity/',
 })
