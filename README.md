@@ -1,1 +1,18 @@
-# Pomodoro-Timer-for-Antigravity
+# Antigravity用ポモドーロタイマー
+
+ViteとVanilla JavaScriptで構築された、プレミアムで美しいポモドーロタイマーWebアプリケーションです。
+
+## Version 1.0.0
+
+### 基本動作
+アプリケーションを起動すると、デフォルトで **25分** の作業タイマーがセットされた状態で始まります。
+
+### ボタン機能
+*   **Start (開始)**: タイマーのカウントダウンを開始します。計測中は **Pause (一時停止)** に変わり、押すと時間を止めます。
+*   **Reset (リセット)**: タイマーを強制的に停止し、時間を **25:00** に戻します。
+
+## 技術スタック
+
+- **フレームワーク**: Vite (Vanilla JS テンプレート)
+- **スタイリング**: CSS3 (変数, Flexbox, Backdrop Filter)
+- **フォント**: Google Fontsの 'Outfit'
